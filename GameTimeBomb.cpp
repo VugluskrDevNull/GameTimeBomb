@@ -1,7 +1,7 @@
 #include <QCoreApplication>                                                 // GameTimeBomb.cpp
 #include <QSettings>
 #include <QFile>
-#include <qDebug>
+#include <QDebug>
 #include <QString>
 #include <QTextStream>
 #include "GameTimeBomb.h"
@@ -59,4 +59,7 @@ void GameTimeBomb::game_bomb(QString qs)
         timer->stop();
 }
 
-
+void GameTimeBomb::quit()
+{
+    qInfo() << "Good bye!";
+}

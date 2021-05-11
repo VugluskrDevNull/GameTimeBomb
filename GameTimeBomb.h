@@ -7,8 +7,8 @@
 
 class GameTimeBomb: public QObject
 {
-    Q_OBJECT;
-    static constexpr char * const provodki[] ={"krasniy", "orangeviy", "jeltiy", "zelyoniy", "goluboy", "siniy", "fioletoviy"};
+    Q_OBJECT
+    inline static constexpr const char* const provodki[] ={"krasniy", "orangeviy", "jeltiy", "zelyoniy", "goluboy", "siniy", "fioletoviy"};
     public:
     GameTimeBomb(Console * cons) {
         timer = new QTimer();
@@ -18,6 +18,7 @@ class GameTimeBomb: public QObject
     private slots:
     void slotTimerAlarm();
     void game_bomb(QString);
+    void quit();
     private:
         QTimer *timer;
     };
