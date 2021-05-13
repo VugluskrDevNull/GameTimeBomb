@@ -1,6 +1,11 @@
 #include <iostream>                   // console.cpp 
 #include "console.h"
 
+Console::Console()
+{
+    m_notifier = new QSocketNotifier(fileno(stdin), QSocketNotifier::Read, this);
+}
+
 void Console::run()
 {
     std::cout << "First message" << std::endl;
@@ -23,6 +28,3 @@ void Console::readCommand()
         emit userInput(retline);
     }
 }
-
-
-
