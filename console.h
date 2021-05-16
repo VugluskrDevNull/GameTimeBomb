@@ -3,7 +3,12 @@
 #pragma once                                   // console.h
 
 #include <QObject>
+#ifdef Q_OS_WIN
+#include <QWinEventNotifier>
+#include <windows.h>
+#else
 #include <QSocketNotifier>
+#endif
 #include <iostream>
 
 class Console : public QObject
@@ -17,7 +22,15 @@ signals:
     void quit();
     void userInput(QString);
 private:
+  //  QSocketNotifier *m_notifier;
+
+#ifdef Q_OS_WIN
+    QWinEventNotifier *m_notifier;
+#else
     QSocketNotifier *m_notifier;
+#endif
+
+
 private slots:
     void readCommand();
 };

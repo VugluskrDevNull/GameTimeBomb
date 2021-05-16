@@ -3,7 +3,16 @@
 
 Console::Console()
 {
+   // m_notifier = new QSocketNotifier(fileno(stdin), QSocketNotifier::Read, this);
+#ifdef Q_OS_WIN
+    m_notifier = new QWinEventNotifier(GetStdHandle(STD_INPUT_HANDLE));
+    connect(m_notifier, &QWinEventNotifier::activated
+#else
     m_notifier = new QSocketNotifier(fileno(stdin), QSocketNotifier::Read, this);
+    connect(m_notifier, &QSocketNotifier::activated
+#endif
+        , this, &Console::readCommand);
+
 }
 
 void Console::run()
