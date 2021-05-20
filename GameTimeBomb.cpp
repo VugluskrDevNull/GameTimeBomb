@@ -21,6 +21,7 @@ void GameTimeBomb::game_bomb(QString qs)
 
     qDebug()<<"qs 1 "<<qs<<"\n";                                      // debug
     qDebug()<<"qs.indexOf() 1" << qs.indexOf("!bomb")<<"\n";            // debug
+    n = QRandomGenerator::global()->bounded(2, 8);
     if(qs.indexOf("!bomb")!=-1)
     {
         qDebug()<<"qs 2 "<<qs<<"\n";                                      // debug
@@ -43,7 +44,7 @@ void GameTimeBomb::game_bomb(QString qs)
         {
              provodki_rand[i]=provodki[ind[i]];
         }
-
+        yes =  QRandomGenerator::global()->bounded(0, n);
         qDebug()<<" otrej "<<provodki_rand[yes]<<endl;
         timer->singleShot(30000, this, SLOT(slotTimerAlarm()));
         qDebug()<<"pered Vami bomba s taymerom ustanovlennym na 30 sec i "<<n<<" provodkov\n";
