@@ -19,7 +19,6 @@ void Console::run()
 {
     std::cout << "First message" << std::endl;
     std::cout << "> " << std::flush;
-    connect(m_notifier, SIGNAL(activated(int)), this, SLOT(readCommand()));
 }
 
 void Console::readCommand()

@@ -22,7 +22,6 @@ signals:
     void quit();
     void userInput(QString);
 private:
-  //  QSocketNotifier *m_notifier;
 
 #ifdef Q_OS_WIN
     QWinEventNotifier *m_notifier;

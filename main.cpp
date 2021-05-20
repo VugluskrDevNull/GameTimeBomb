@@ -12,8 +12,11 @@ int main(int argc, char** argv)
 {
 
     QCoreApplication app(argc, argv);
+    qDebug()<<"enter !bomb\n";
     Console *cons = new Console();
     GameTimeBomb *pg = new GameTimeBomb(cons);
+   //  pg->game_bomb("!bomb");
+   //  pg->game_bomb("krasniy");
     cons->run();
 
     QObject::connect(cons, SIGNAL(quit()), &app, SLOT(quit()));
