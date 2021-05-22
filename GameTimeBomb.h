@@ -6,6 +6,8 @@
 #include <QRandomGenerator>
 #include "console.h"
 
+
+
 class GameTimeBomb: public QObject
 {
     Q_OBJECT
@@ -13,6 +15,7 @@ class GameTimeBomb: public QObject
     public:
     GameTimeBomb(Console * cons) {
         timer = new QTimer();
+        timer->setSingleShot(true);
         QObject::connect(cons, SIGNAL (userInput(QString)), this,  SLOT(game_bomb(QString)));    //  запуск интерфейса
         QObject::connect(timer, SIGNAL(timeout()), this, SLOT(slotTimerAlarm()));    // запуск таймера
     }
@@ -23,7 +26,7 @@ class GameTimeBomb: public QObject
     private:
     QTimer *timer;
     int n;                              // число проводков
-    char *provodki_rand;       // массив случайных проводков
+    const char *provodki_rand[sizeof(provodki)/sizeof(provodki[0])];       // массив случайных проводков
     int yes;
 };
 
