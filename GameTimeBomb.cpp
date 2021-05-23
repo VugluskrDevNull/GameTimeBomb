@@ -9,18 +9,6 @@
 #include "QTime"
 #include <QRandomGenerator>
 
-/*
-переменная "состояние". цифра в которой обозначает в каком состоянии находится игра. наприппер #define IDLE 1
-(простаивает. игры нет), GAME 2 (игра в процессе), OFF 3
-(игра отключена) ну и внутри game_bomb() проверяешь if (state == OFF) return;. тоесть ты ничего
-не делаешь если игра "отключена"
- */
-
-#define IDLE 1
-#define GAME 2
-#define OFF 3
-int state;
-
 void GameTimeBomb::slotTimerAlarm()
 {
     qDebug()<<"BOOM!!!BANG!!!";
@@ -29,6 +17,7 @@ void GameTimeBomb::slotTimerAlarm()
 
 void GameTimeBomb::game_bomb(QString qs)
 {
+
     n = QRandomGenerator::global()->bounded(2, 8);
     if(qs.indexOf("!bomb")!=-1)
     {
@@ -55,8 +44,8 @@ void GameTimeBomb::game_bomb(QString qs)
 
         yes =  QRandomGenerator::global()->bounded(0, n);
         qDebug()<<" otrej "<<provodki_rand[yes]<<endl;
-        timer->start(20000);
-        qDebug()<<"pered Vami bomba s taymerom ustanovlennym na 20 sec i "<<n<<" provodkov\n";
+        timer->start(30000);
+        qDebug()<<"pered Vami bomba s taymerom ustanovlennym na 30 sec i "<<n<<" provodkov\n";
         for (int i=0; i<n; i++)
             qDebug()<< provodki_rand[i]<<" ";
     }
