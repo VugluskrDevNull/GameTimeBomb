@@ -6,19 +6,16 @@
 #include <QRandomGenerator>
 #include "console.h"
 
-#define IDLE 1
-#define GAME 2
-#define OFF 3
-
 class GameTimeBomb: public QObject
 {
     Q_OBJECT
+    enum { STATE_IDLE = 1, STATE_GAME, STATE_OFF };
     inline static constexpr const char* const provodki[] ={"krasniy", "orangeviy", "jeltiy", "zelyoniy", "goluboy", "siniy", "fioletoviy"};
     public:
     GameTimeBomb(Console * cons) {
         timer = new QTimer();
         timer->setSingleShot(true);
-        state = IDLE;
+        state = STATE_IDLE;
         QObject::connect(cons, SIGNAL (userInput(QString)), this,  SLOT(game_bomb(QString)));    //  запуск интерфейса
         QObject::connect(timer, SIGNAL(timeout()), this, SLOT(slotTimerAlarm()));    // запуск таймера
     }

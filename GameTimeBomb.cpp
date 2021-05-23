@@ -12,7 +12,7 @@
 void GameTimeBomb::slotTimerAlarm()
 {
     qDebug()<<"BOOM!!!BANG!!!";
-    state = OFF;
+    state = STATE_OFF;
 }
 
 void GameTimeBomb::game_bomb(QString qs)
@@ -21,8 +21,8 @@ void GameTimeBomb::game_bomb(QString qs)
     n = QRandomGenerator::global()->bounded(2, 8);
     if(qs.indexOf("!bomb")!=-1)
     {
-        if (state == GAME) return;
-        state = GAME;
+        if (state == STATE_GAME) return;
+        state = STATE_GAME;
         int SZ=7;
         int ind[SZ];
 
@@ -51,10 +51,10 @@ void GameTimeBomb::game_bomb(QString qs)
     }
     if(qs==provodki_rand[yes])
     {
-        if (state == OFF) return;
+        if (state == STATE_OFF) return;
         qDebug()<<"WIN!";
         timer->stop();
-        state = OFF;
+        state = STATE_OFF;
     }
 }
 
