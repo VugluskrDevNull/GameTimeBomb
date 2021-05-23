@@ -55,13 +55,14 @@ void GameTimeBomb::game_bomb(QString qs)
 
         yes =  QRandomGenerator::global()->bounded(0, n);
         qDebug()<<" otrej "<<provodki_rand[yes]<<endl;
-        timer->start(10000);
-        qDebug()<<"pered Vami bomba s taymerom ustanovlennym na 30 sec i "<<n<<" provodkov\n";
+        timer->start(20000);
+        qDebug()<<"pered Vami bomba s taymerom ustanovlennym na 20 sec i "<<n<<" provodkov\n";
         for (int i=0; i<n; i++)
             qDebug()<< provodki_rand[i]<<" ";
     }
     if(qs==provodki_rand[yes])
     {
+        if (state == OFF) return;
         qDebug()<<"WIN!";
         timer->stop();
         state = OFF;
