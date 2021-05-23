@@ -16,7 +16,7 @@ class GameTimeBomb: public QObject
         timer = new QTimer();
         timer->setSingleShot(true);
         state = STATE_IDLE;
-        QObject::connect(cons, SIGNAL (userInput(QString)), this,  SLOT(game_bomb(QString)));    //  запуск интерфейса
+       // QObject::connect(cons, SIGNAL (userInput(QString)), this,  SLOT(game_bomb(QString)));    //  запуск интерфейса
         QObject::connect(timer, SIGNAL(timeout()), this, SLOT(slotTimerAlarm()));    // запуск таймера
     }
     private slots:
