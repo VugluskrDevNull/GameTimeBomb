@@ -27,4 +27,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     GameTimeBomb.h \
+    Interface.h \
     console.h

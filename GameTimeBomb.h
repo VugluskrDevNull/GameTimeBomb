@@ -5,8 +5,9 @@
 #include <QTime>
 #include <QRandomGenerator>
 #include "console.h"
+#include "Interface.h"
 
-class GameTimeBomb: public QObject
+class GameTimeBomb: public QObject, public Interface
 {
     Q_OBJECT
     enum { STATE_IDLE = 1, STATE_GAME, STATE_OFF };
@@ -17,7 +18,7 @@ class GameTimeBomb: public QObject
         timer->setSingleShot(true);
         state = STATE_IDLE;
        // QObject::connect(cons, SIGNAL (userInput(QString)), this,  SLOT(game_bomb(QString)));    //  запуск интерфейса
-        QObject::connect(timer, SIGNAL(timeout()), this, SLOT(slotTimerAlarm()));    // запуск таймера
+        QObject::connect(timer, SIGNAL(timeout()), this, SLOT(slotTimerAlarm()));    // запуск таймера  // error
     }
     private slots:
     void slotTimerAlarm();

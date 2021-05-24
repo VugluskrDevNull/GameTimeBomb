@@ -3,6 +3,7 @@
 #pragma once                                   // console.h
 
 #include <QObject>
+#include "Interface.h"
 #ifdef Q_OS_WIN
 #include <QWinEventNotifier>
 #include <windows.h>
@@ -11,13 +12,15 @@
 #endif
 #include <iostream>
 
-class Console : public QObject
+class Console : public QObject , public Interface
 {
     QString retline;
     Q_OBJECT;
 public:
     Console();
     void run();
+    void send(QString);
+    void write ();
 signals:
     void quit();
     void userInput(QString);

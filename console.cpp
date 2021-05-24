@@ -1,5 +1,7 @@
 #include <iostream>                   // console.cpp
 #include "console.h"
+#include <QString>
+#include <QDebug>
 
 Console::Console()
 {
@@ -35,4 +37,18 @@ void Console::readCommand()
         retline=line.c_str();
         emit userInput(retline);
     }
+}
+
+void Console::send(QString str)
+{
+    qDebug() << str << '\n';
+}
+
+void Console::write()
+{
+    std::string line;
+    std::getline(std::cin, line);
+    if (std::cin.eof() || line == "quit") {
+        std::cout << "Good bye!" << std::endl;
+    }   // socket->write(str.toLatin1().constData());
 }
