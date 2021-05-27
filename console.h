@@ -12,7 +12,7 @@
 #endif
 #include <iostream>
 
-class Console : public QObject , public Interface
+class Console : public Interface
 {
     QString retline;
     Q_OBJECT;

@@ -5,9 +5,8 @@
 #include <QTime>
 #include <QRandomGenerator>
 #include "console.h"
-#include "Interface.h"
 
-class GameTimeBomb: public QObject, public Interface
+class GameTimeBomb: public QObject
 {
     Q_OBJECT
     enum { STATE_IDLE = 1, STATE_GAME, STATE_OFF };
