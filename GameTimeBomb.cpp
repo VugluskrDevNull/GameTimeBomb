@@ -17,7 +17,9 @@ void GameTimeBomb::slotTimerAlarm()
 
 void GameTimeBomb::game_bomb(QString qs)
 {
+     Interface *iface;
 
+   // Console * cons = new Console;
     n = QRandomGenerator::global()->bounded(2, 8);
     if(qs.indexOf("!bomb")!=-1)
     {
@@ -45,14 +47,19 @@ void GameTimeBomb::game_bomb(QString qs)
         yes =  QRandomGenerator::global()->bounded(0, n);
         qDebug()<<" otrej "<<provodki_rand[yes]<<endl;
         timer->start(30000);
-        qDebug()<<"pered Vami bomba s taymerom ustanovlennym na 30 sec i "<<n<<" provodkov\n";
+        iface->send("pered Vami bomba s taymerom ustanovlennym na 30 sec i "+ QVariant(n).toString() +" provodkov");
+        //cons->send("pered Vami bomba s taymerom ustanovlennym na 30 sec i "+ QVariant(n).toString() +" provodkov");
         for (int i=0; i<n; i++)
-            qDebug()<< provodki_rand[i]<<" ";
+        {
+            iface->send(provodki_rand[i]);
+            //cons->send(provodki_rand[i]);
+        }
     }
     if(qs==provodki_rand[yes])
     {
         if (state == STATE_OFF) return;
-        qDebug()<<"WIN!";
+        //cons->send("WIN!");
+        iface->send("WIN!");
         timer->stop();
         state = STATE_OFF;
     }

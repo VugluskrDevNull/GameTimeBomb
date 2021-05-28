@@ -1,4 +1,4 @@
-#ifndef INTERFACE_H
+#ifndef INTERFACE_H                                  // Interface.h
 #define INTERFACE_H
 
 #include <QString>
@@ -8,7 +8,7 @@ class Interface : public QObject
 {
     Q_OBJECT;
 public:
-    void run();                           // console
+    void run();                         // from console
     virtual   void send(QString)=0;
     virtual   void write ()=0;
 signals:

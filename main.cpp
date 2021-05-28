@@ -5,6 +5,7 @@
 #include <QString>
 #include <QTextStream>
 #include "GameTimeBomb.cpp"
+//#include "libircbot.cpp"
 #include <QTimer>
 #include "QTime"
 
@@ -12,6 +13,11 @@ int main(int argc, char** argv)
 {
 
     QCoreApplication app(argc, argv);
+
+  //  Bot *botptr = new Bot;
+  //  if (!(botptr->connect()))
+  //      return  1;
+
     qDebug()<<"enter !bomb\n";
     Console *cons = new Console();
     GameTimeBomb *pg = new GameTimeBomb(cons);
