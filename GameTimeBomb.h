@@ -9,10 +9,15 @@
 class GameTimeBomb: public QObject
 {
     Q_OBJECT
+   // Console * cons2;
+    Interface * iface2;
     enum { STATE_IDLE = 1, STATE_GAME, STATE_OFF };
     inline static constexpr const char* const provodki[] ={"krasniy", "orangeviy", "jeltiy", "zelyoniy", "goluboy", "siniy", "fioletoviy"};
     public:
-    GameTimeBomb(Console * cons) {
+   // GameTimeBomb(Console * cons)  {
+      GameTimeBomb(Console * iface)  {
+      //  cons2=cons;
+        iface2=iface;
         timer = new QTimer();
         timer->setSingleShot(true);
         state = STATE_IDLE;

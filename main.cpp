@@ -21,6 +21,7 @@ int main(int argc, char** argv)
     qDebug()<<"enter !bomb\n";
     Console *cons = new Console();
     GameTimeBomb *pg = new GameTimeBomb(cons);
+    Interface *iface;
    //  pg->game_bomb("!bomb");
    //  pg->game_bomb("krasniy");
     cons->run();
