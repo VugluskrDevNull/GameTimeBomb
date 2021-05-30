@@ -10,7 +10,6 @@ class Interface : public QObject
 public:
     void run();                         // from console
     virtual   void send(QString)=0;
-    virtual   void write ()=0;
 signals:
     void quit();
     void userInput(QString);

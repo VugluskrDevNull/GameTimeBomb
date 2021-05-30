@@ -15,7 +15,7 @@ void GameTimeBomb::slotTimerAlarm()
     state = STATE_OFF;
 }
 
-void GameTimeBomb::game_bomb(QString qs)
+void GameTimeBomb::userInput(QString qs)
 {
     n = QRandomGenerator::global()->bounded(2, 8);
     if(qs.indexOf("!bomb")!=-1)
@@ -45,23 +45,22 @@ void GameTimeBomb::game_bomb(QString qs)
         qDebug()<<" otrej "<<provodki_rand[yes]<<endl;
         timer->start(30000);
         //cons2->send("pered Vami bomba s taymerom ustanovlennym na 30 sec i "+ QVariant(n).toString() +" provodkov");
-        iface2->send("pered Vami bomba s taymerom ustanovlennym na 30 sec i "+ QVariant(n).toString() +" provodkov");
+        _iface->send("pered Vami bomba s taymerom ustanovlennym na 30 sec i "+ QVariant(n).toString() +" provodkov");
         for (int i=0; i<n; i++)
         {
            // cons2->send(provodki_rand[i]);
-            iface2->send(provodki_rand[i]);
+            _iface->send(provodki_rand[i]);
         }
     }
     if(qs==provodki_rand[yes])
     {
         if (state == STATE_OFF) return;
         //cons2->send("WIN!");
-        iface2->send("WIN!");
+        _iface->send("WIN!");
         timer->stop();
         state = STATE_OFF;
     }
 }
-// меняй все Console *cons внутри GameTimeBomb на Interface *iface. ну и cons->send() на iface->send(). и тестируй
 
 void GameTimeBomb::quit()
 {

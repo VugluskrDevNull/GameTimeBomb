@@ -10,14 +10,14 @@ class GameTimeBomb: public QObject
 {
     Q_OBJECT
    // Console * cons2;
-    Interface * iface2;
+    Interface * _iface;
     enum { STATE_IDLE = 1, STATE_GAME, STATE_OFF };
     inline static constexpr const char* const provodki[] ={"krasniy", "orangeviy", "jeltiy", "zelyoniy", "goluboy", "siniy", "fioletoviy"};
     public:
    // GameTimeBomb(Console * cons)  {
       GameTimeBomb(Console * iface)  {
       //  cons2=cons;
-        iface2=iface;
+        _iface=iface;
         timer = new QTimer();
         timer->setSingleShot(true);
         state = STATE_IDLE;
@@ -26,7 +26,7 @@ class GameTimeBomb: public QObject
     }
     private slots:
     void slotTimerAlarm();
-    void game_bomb(QString);
+    void userInput(QString);
     void quit();
     private:
     QTimer *timer;

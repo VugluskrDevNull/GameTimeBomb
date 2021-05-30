@@ -44,11 +44,3 @@ void Console::send(QString str)
     qDebug() << str << '\n';
 }
 
-void Console::write()
-{
-    std::string line;
-    std::getline(std::cin, line);
-    if (std::cin.eof() || line == "quit") {
-        std::cout << "Good bye!" << std::endl;
-    }   // socket->write(str.toLatin1().constData());
-}

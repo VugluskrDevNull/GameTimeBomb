@@ -20,7 +20,6 @@ public:
     Console();
     void run();
     void send(QString);
-    void write ();
 signals:
     void quit();
     void userInput(QString);
